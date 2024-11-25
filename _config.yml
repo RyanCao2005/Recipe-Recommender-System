@@ -1,25 +1,25 @@
 title: "Recipe-Recommender-System"
 description: "A multi-class classifier and recommender system for personalized recipe suggestions. Combines NLP (TF-IDF, BoW), feature engineering, and classification to predict recipe ratings and recommend recipes based on ingredients, health metrics, and user preferences. Built for scalability and real-world applications."
 
-# GitHub Pages URL - Use the GitHub Pages URL, not the repository URL
-url: "https://ryancao2005.github.io" # Replace 'ryancao2005' with your GitHub username
-baseurl: /
+# # GitHub Pages URL - Use the GitHub Pages URL, not the repository URL
+# url: "https://ryancao2005.github.io" # Replace 'ryancao2005' with your GitHub username
+# baseurl: /
 
-# Base URL - Set to the repository name, without angle brackets
-# baseurl: "Recipe-Reccommender-System" # This is your repository name
+Base URL - Set to the repository name, without angle brackets
+baseurl: "Recipe-Reccommender-System" # This is your repository name
 
-# Lanyon theme settings
-# permalink: /:year/:month/:day/:title/
-# markdown: kramdown
+Lanyon theme settings
+permalink: /:year/:month/:day/:title/
+markdown: kramdown
 
-# Jekyll plugins
-# plugins:
-  # - jekyll-feed
-  # - jekyll-seo-tag
-  # - jekyll-sitemap
-  # - jekyll-gist
+Jekyll plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-gist
 
-# Syntax highlighting
-# highlighter: rouge # Or 'pygments' if you prefer
+Syntax highlighting
+highlighter: rouge # Or 'pygments' if you prefer
 
 remote_theme: poole/lanyon
