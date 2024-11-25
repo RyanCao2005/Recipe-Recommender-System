@@ -9,17 +9,17 @@ baseurl: /
 # baseurl: "Recipe-Reccommender-System" # This is your repository name
 
 # Lanyon theme settings
-permalink: /:year/:month/:day/:title/
-markdown: kramdown
+# permalink: /:year/:month/:day/:title/
+# markdown: kramdown
 
 # Jekyll plugins
-plugins:
-  - jekyll-feed
-  - jekyll-seo-tag
-  - jekyll-sitemap
-  - jekyll-gist
+# plugins:
+  # - jekyll-feed
+  # - jekyll-seo-tag
+  # - jekyll-sitemap
+  # - jekyll-gist
 
 # Syntax highlighting
-highlighter: rouge # Or 'pygments' if you prefer
+# highlighter: rouge # Or 'pygments' if you prefer
 
 remote_theme: poole/lanyon
