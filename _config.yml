@@ -7,8 +7,8 @@ url: "https://ryancao2005.github.io" # Replace 'ryancao2005' with your GitHub us
 # Base URL - Set to the repository name, without angle brackets
 baseurl: "/Recipe-Recommender-System" # This is your repository name
 
-# Poole settings
-theme: jekyll-theme-poole
+# Lanyon theme settings
+theme: jekyll-theme-lanyon
 permalink: /:year/:month/:day/:title/
 markdown: kramdown
 
@@ -20,4 +20,4 @@ plugins:
   - jekyll-gist
 
 # Syntax highlighting
-highlighter: rouge
+highlighter: rouge # Or 'pygments' if you prefer
