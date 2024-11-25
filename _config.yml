@@ -8,7 +8,6 @@ url: "https://ryancao2005.github.io" # Replace 'ryancao2005' with your GitHub us
 baseurl: "Recipe-Reccommender-System" # This is your repository name
 
 # Lanyon theme settings
-theme: jekyll-theme-lanyon
 permalink: /:year/:month/:day/:title/
 markdown: kramdown
 
@@ -21,3 +20,5 @@ plugins:
 
 # Syntax highlighting
 highlighter: rouge # Or 'pygments' if you prefer
+
+remote_theme: poole/lanyon
