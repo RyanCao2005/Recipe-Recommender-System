@@ -3,9 +3,10 @@ description: "A multi-class classifier and recommender system for personalized r
 
 # GitHub Pages URL - Use the GitHub Pages URL, not the repository URL
 url: "https://ryancao2005.github.io" # Replace 'ryancao2005' with your GitHub username
+baseurl: /
 
 # Base URL - Set to the repository name, without angle brackets
-baseurl: "Recipe-Reccommender-System" # This is your repository name
+# baseurl: "Recipe-Reccommender-System" # This is your repository name
 
 # Lanyon theme settings
 permalink: /:year/:month/:day/:title/
