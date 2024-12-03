@@ -173,13 +173,25 @@ This insight is significant for the development of the recipe recommender system
 The box plot below shows the relationship between the number of steps in a recipe (`n_steps`) and the recipe's rating (`rating`). The plot reveals that, on average, recipes with higher ratings tend to have more steps, with some variations in the number of steps across different ratings. Notably, 5-star recipes exhibit a wide range of steps, but the median number of steps appears consistent, suggesting that well-rated recipes may vary in complexity but still maintain a high level of user satisfaction.
 
 <iframe
-  src="assets/number_of_steps_by_rating_n_steps.html"
+  src="assets/distribution_of_ratings_n_steps.html"
   width="800"
   height="600"
   frameborder="0"
 ></iframe>
 
 This visualization is significant for understanding how recipe complexity (as measured by the number of steps) influences user satisfaction. It can inform our recommender system by highlighting the balance between recipe difficulty and user ratings, helping to recommend recipes that are both achievable and highly rated.
+## Interesting Aggregates
+
+In this section, we examined the relationship between the number of steps (`n_steps`) in a recipe and the average cooking time (`minutes`). The data was grouped by the number of steps to analyze how cooking time varies with recipe complexity.
+
+The plot below visualizes this relationship, showing how the average cooking time increases as the number of steps increases. As expected, more complex recipes with more steps tend to take more time, though some variation is observed, especially for recipes with a small number of steps.
+
+<iframe
+  src="assets/average_cooking_time_by_steps.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
 
 
