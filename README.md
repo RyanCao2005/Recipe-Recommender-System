@@ -286,13 +286,14 @@ The plot below shows the **empirical distribution of the test statistic** from t
 The p-values for both tests were computed as the proportion of permuted test statistics greater than or equal to the observed test statistic. Based on these results, we conclude:
 - The missingness of ratings **is dependent on the number of ingredients**.
 - The missingness of ratings **is not dependent on the cooking time**.
+
 ### **Significance of Results**
 
 The results of our permutation tests provide key insights into the missingness of ratings in relation to recipe attributes. We found that the missingness of ratings **is dependent on the number of ingredients**, with more complex recipes (those with more ingredients) being more likely to have missing ratings. This suggests that handling missing data for such recipes requires special attention. However, **cooking time** did not show a significant relationship with missingness, indicating that cooking time does not impact the likelihood of missing ratings. These findings are crucial for improving our recipe recommender system by better understanding the patterns of missing data and adjusting our modeling approach accordingly, ensuring higher accuracy in our model.
 
-### **Hypothesis Testing: Difference in Steps Between Low and High Rated Recipes**
+## **Hypothesis Testing: Difference in Steps Between Low and High Rated Recipes**
 
-For this hypothesis test, we aimed to determine if there was a significant difference in the number of steps required for low and high-rated recipes.
+For this hypothesis test, we aimed to determine if there was a significant difference in the number of steps required for low and high-rated recipes. We were able to run this test by binarizing ratings as lower or high rated recipes where 3 was our threshold. We dropped columns with missing ratings for the sake of the test.
 
 #### **Null Hypothesis**:
 There is no difference in the distribution of steps among low and high-rated recipes.
@@ -326,5 +327,9 @@ Below is the **empirical distribution of the test statistic** from our permutati
   height="600"
   frameborder="0"
 ></iframe>
+
+#### **Justification of Choices**:
+
+The **difference in means** is an appropriate test statistic because it directly compares the number of steps between low-rated and high-rated recipes. This helps us answer the question of whether the number of steps differs significantly between these two groups. A **permutation test** was chosen because it does not assume any specific distribution of the data, making it ideal for real-world data that might not follow traditional parametric assumptions. Using a significance level of **0.05** ensures a reasonable balance between Type I and Type II errors, which is standard in hypothesis testing. By focusing on **difference in means**(lower rated - rated higher), we are able to quantify the effect size and assess its statistical significance, providing clear insights into the relationship between recipe steps and rating.
 
 
