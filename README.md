@@ -286,3 +286,6 @@ The plot below shows the **empirical distribution of the test statistic** from t
 The p-values for both tests were computed as the proportion of permuted test statistics greater than or equal to the observed test statistic. Based on these results, we conclude:
 - The missingness of ratings **is dependent on the number of ingredients**.
 - The missingness of ratings **is not dependent on the cooking time**.
+### **Significance of Results**
+
+The results of our permutation tests provide key insights into the missingness of ratings in relation to recipe attributes. We found that the missingness of ratings **is dependent on the number of ingredients**, with more complex recipes (those with more ingredients) being more likely to have missing ratings. This suggests that handling missing data for such recipes requires special attention. However, **cooking time** did not show a significant relationship with missingness, indicating that cooking time does not impact the likelihood of missing ratings. These findings are crucial for improving our recipe recommender system by better understanding the patterns of missing data and adjusting our modeling approach accordingly, ensuring higher accuracy in our model.
