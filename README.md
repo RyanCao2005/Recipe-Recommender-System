@@ -93,12 +93,15 @@ For this project, we focused on retaining columns that provided the most value f
 | `n_steps`      | Total number of steps involved in preparing the recipe.                                 |
 | `n_ingredients`| Total number of ingredients used in the recipe.                                         |
 
-### Kept Columns from Interactions Dataset
+### Kept Columns from Recipes Dataset
 
-| Column     | Description                                      |
-|------------|--------------------------------------------------|
-| `rating`   | Rating given by the user (1 to 5).              |
-| `review`   | Text review provided by the user.               |
+| Column         | Description                                                                             |
+|----------------|-----------------------------------------------------------------------------------------|
+| `minutes`      | Time required to prepare the recipe, in minutes.                                        |
+| `nutrition`    | Nutrition details including calories, fat, sugar, sodium, protein, saturated fat, and carbs. |
+| `n_steps`      | Total number of steps involved in preparing the recipe.                                 |
+| `n_ingredients`| Total number of ingredients used in the recipe.                                         |
+
 ### Dropped Columns
 We excluded several columns from the recipes and interactions datasets, such as `contributor_id`, `submitted`, `user_id`, `recipe_id`, `date`, `description`, `id`, `name`, `tags`, and `steps`. These columns were removed because they were either redundant, irrelevant to the task, or did not contribute meaningfully to predicting user ratings.
 
@@ -152,7 +155,7 @@ To clean the dataset and ensure it reflects practical cooking scenarios, we iden
 By filtering these outliers, we ensured that the dataset remains representative of typical user behavior and preferences. This step improves both the quality of insights derived from the data and the reliability of predictions made by our models.
 ## Univariate Analysis
 
-The histogram below displays the distribution of recipe ratings on a scale of 1 to 5 stars. The data reveals a strong skew toward 5-star ratings, indicating that most recipes are highly rated. This highlights the challenge of working with imbalanced data in our predictive modeling.
+The histogram below displays the distribution of recipe ratings on a scale of 1 to 5 stars. The data reveals a strong skew toward 5-star ratings, with the majority of recipes receiving top marks. This highlights the challenge of working with imbalanced data, where the high concentration of 5-star ratings may affect the performance of predictive models.
 
 <iframe
   src="assets/distribution_of_ratings.html"
@@ -160,6 +163,25 @@ The histogram below displays the distribution of recipe ratings on a scale of 1 
   height="600"
   frameborder="0"
 ></iframe>
+
+This insight is significant for the development of the recipe recommender system, as it suggests that most recipes are highly rated, but it also indicates the need for techniques to handle imbalanced datasets. By addressing this, the model can be made more robust and better equipped to recommend diverse recipes that may not always receive the highest ratings.
+
+
+
+## Bivariate Analysis
+
+The box plot below shows the relationship between the number of steps in a recipe (`n_steps`) and the recipe's rating (`rating`). The plot reveals that, on average, recipes with higher ratings tend to have more steps, with some variations in the number of steps across different ratings. Notably, 5-star recipes exhibit a wide range of steps, but the median number of steps appears consistent, suggesting that well-rated recipes may vary in complexity but still maintain a high level of user satisfaction.
+
+<iframe
+  src="assets/number_of_steps_by_rating_n_steps.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+This visualization is significant for understanding how recipe complexity (as measured by the number of steps) influences user satisfaction. It can inform our recommender system by highlighting the balance between recipe difficulty and user ratings, helping to recommend recipes that are both achievable and highly rated.
+
+
 
 
 
