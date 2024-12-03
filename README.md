@@ -192,8 +192,97 @@ The plot below visualizes this relationship, showing how the average cooking tim
   frameborder="0"
 ></iframe>
 
+# Missingness Assessment
 
+## NMAR Analysis
 
+In this section, we explore the potential for **Not Missing at Random (NMAR)** in the `review` column of our dataset. We hypothesize that the absence of a recipe description is not random, but rather influenced by certain factors. Specifically:
 
+- **Popular Recipes**: If a recipe is already popular or highly rated, there may be less need for a detailed review, as users are likely already familiar with it. Therefore, the lack of a review may not be missing randomly, but because the recipe is well-known or widely recognized.
+- **Simple Recipes**: Recipes that are simple to make, with few ingredients or steps, may also have missing reviews. In such cases, the recipe may not require an elaborate review, as the recipe will most likely be about a food that is not worth writing home about
 
+This potential NMAR behavior in the `review` column introduces a bias in the data, as the absence of this information is likely tied to the recipe's characteristics rather than a random missingness process.
 
+## Missingness Dependency
+
+We moved on to examine the missingness of `rating` in the merged DataFrame by testing the dependency of its missingness. Specifically, we investigated whether the missingness in the `rating` column depends on the `n_ingredients` (number of ingredients) or `minutes` (cooking time) columns.
+
+### Number of Ingredients and Rating
+
+**Null Hypothesis**: The missingness of ratings does not depend on the number of ingredients in the recipe.
+
+**Alternate Hypothesis**: The missingness of ratings does depend on the number of ingredients in the recipe.
+
+#### Distribution of `n_ingredients` by Rating Missingness
+
+The plot below shows the distribution of the number of ingredients (`n_ingredients`) for recipes where ratings are missing and not missing. This simplified horizontal violin plot highlights the spread and density of `n_ingredients` for each group, providing a clearer comparison.
+
+<iframe
+  src="assets/ingredients_violin_clean.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+#### Permutation Test and Results
+
+We ran a **permutation test** to assess whether the missingness of ratings is dependent on the number of ingredients in the recipe. The test statistic used was the **difference in means** of `n_ingredients` between the groups with missing ratings (`missing=True`) and non-missing ratings (`missing=False`).
+
+The plot below shows the **empirical distribution of the test statistic** from the permutation test, with the observed test statistic highlighted in red.
+
+<iframe
+  src="assets/ingredients_histogram_clean.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+- **P-value**: **0.0**  
+  This highly significant result provides strong evidence to reject the null hypothesis.
+
+**Conclusion**: We conclude that the missingness of ratings **is dependent on the number of ingredients** in the recipe. Recipes with more ingredients are more likely to have missing ratings.
+
+---
+
+### Cooking Time and Rating
+
+**Null Hypothesis**: The missingness of ratings does not depend on the cooking time of the recipe.
+
+**Alternate Hypothesis**: The missingness of ratings does depend on the cooking time of the recipe.
+
+#### Distribution of `minutes` by Rating Missingness
+
+The plot below shows the distribution of recipe cooking time (`minutes`) for recipes where ratings are missing and not missing. This simplified horizontal violin plot highlights the spread and density of `minutes` for each group, providing a clearer comparison.
+
+<iframe
+  src="assets/minutes_violin_clean.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+#### Permutation Test and Results
+
+We performed a **permutation test** to assess whether the missingness of ratings depends on the cooking time (`minutes`). The test statistic used was the **difference in means** of `minutes` between the groups with missing ratings (`missing=True`) and non-missing ratings (`missing=False`).
+
+The plot below shows the **empirical distribution of the test statistic** from the permutation test, with the observed test statistic highlighted in red.
+
+<iframe
+  src="assets/minutes_histogram_clean.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+- **P-value**: **0.146**  
+  This result is not statistically significant, so we do not reject the null hypothesis.
+
+**Conclusion**: The missingness of ratings **is not dependent on the recipe's cooking time**. This indicates that cooking time does not significantly influence whether a rating is missing.
+
+---
+
+### P-value Calculation
+
+The p-values for both tests were computed as the proportion of permuted test statistics greater than or equal to the observed test statistic. Based on these results, we conclude:
+- The missingness of ratings **is dependent on the number of ingredients**.
+- The missingness of ratings **is not dependent on the cooking time**.
