@@ -1,6 +1,4 @@
 
-## Introduction
-
 Recipes and ratings play a central role in shaping our culinary experiences, guiding how we discover and enjoy food. Predicting user preferences is essential for creating personalized and effective recipe recommendations. This project leverages machine learning to predict recipe ratings using numerical and textual features from the dataset. To address the challenge of imbalanced ratings, we employ advanced techniques such as TF-IDF, unsupervised learning methods like PCA, and ensemble learning techniques using Random Forest for robust multi-class classification.
 
 From a practical standpoint, this work lays the groundwork for building recommender systems that align more closely with individual tastes, even when working with messy or imbalanced datasets. Theoretically, it offers valuable insights into applying machine learning to real-world challenges, particularly in managing skewed data distributions and improving predictive accuracy.
