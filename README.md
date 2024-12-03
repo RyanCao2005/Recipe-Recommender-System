@@ -174,7 +174,7 @@ The plot below shows the distribution of calories across recipes. This visualiza
   frameborder="0"
 ></iframe>
 
-This plot shows that the distribution is skewed towards low calorie recipes. Suggesting that there's a high concentration of low calorie recipes.
+This plot shows that the distribution is skewed to the right. Suggesting that there's a high concentration of low calorie recipes.
 
 #### **Distribution of Number of Steps**
 
@@ -187,7 +187,7 @@ The plot below shows the distribution of the number of steps (`n_steps`) across 
   frameborder="0"
 ></iframe>
 
-This plot shows that the distribution is skewed towards recipes with low number of ingredients. Suggesting that there's a high concentration of recipes that require a low number of ingredients.
+This plot shows that the distribution is skewed to the right. Suggesting that there's a high concentration of recipes that require a low number of ingredients.
 
 #### **Distribution of Number of Ingredients**
 
@@ -200,13 +200,13 @@ The plot below shows the distribution of the number of ingredients (`n_ingredien
   frameborder="0"
 ></iframe>
 
-This plot shows that the distribution is skewed towards recipes with a low number of ingredients. Suggesting that there's a high concentration of recipes that require a low number of steps to complete.
+This plot shows that the distribution is skewed to the right. Suggesting that there's a high concentration of recipes that require a low number of steps to complete.
 
 
 
 ## Bivariate Analysis
 
-The box plot below shows the relationship between the number of steps in a recipe (`n_steps`) and the recipe's rating (`rating`). The plot reveals that, on average, recipes with higher ratings tend to have have similar number of steps compared to recipes with low ratings. This plot suggests that rating is not affected by number of steps. Although it seems like this is the case we will see if this is actually true with further analysis.
+The box plot below shows the relationship between the number of steps in a recipe (`n_steps`) and the recipe's rating (`rating`). This plot suggests that rating is not affected by number of steps. Although it seems like this is the case we will see if this is actually true with further analysis.
 
 <iframe
   src="assets/steps_violin_by_rating.html"
@@ -383,6 +383,6 @@ We chose the **F1-score (macro-average)** as the primary evaluation metric for t
 3. **Focus on Precision and Recall**: F1-score balances precision (correctness of positive predictions) and recall (coverage of actual positives), which is crucial in scenarios where missing underrepresented classes could reduce the model’s usefulness.
 
 ### **Training Features and Justification**:
-We selected features that would be available at the time of prediction. These include attributes such as `minutes`, `n_steps`, `n_ingredients`, `nutrition` details, and textual features like `tags` and `reviews`. These features are known before a recipe is rated and provide valuable information, such as preparation time, complexity, and potential sentiment from user-provided reviews.
+We selected features that would be available at the time of prediction. These include attributes such as `minutes`, `n_steps`, `n_ingredients`, `nutrition` details, and textual features like `ingredients` and `reviews`. These features are known before a recipe is rated and provide valuable information, such as preparation time, complexity, and potential sentiment from user-provided reviews.
 
 
