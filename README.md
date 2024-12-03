@@ -163,6 +163,45 @@ The histogram below displays the distribution of recipe ratings on a scale of 1 
 
 This insight is significant for the development of the recipe recommender system, as it suggests that most recipes are highly rated, but it also indicates the need for techniques to handle imbalanced datasets. By addressing this, the model can be made more robust and better equipped to recommend diverse recipes that may not always receive the highest ratings.
 
+#### **Distribution of Calories**
+
+The plot below shows the distribution of calories across recipes. This visualization provides insights into the caloric spread of recipes, highlighting whether most recipes are low or high in calories.
+
+<iframe
+  src="assets/distribution_of_calories.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+This plot shows that the distribution is skewed towards low calorie recipes. Suggesting that there's a high concentration of low calorie recipes.
+
+#### **Distribution of Number of Steps**
+
+The plot below shows the distribution of the number of steps (`n_steps`) across recipes. Understanding this distribution helps us assess how complex or simple most recipes are.
+
+<iframe
+  src="assets/distribution_of_steps.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+This plot shows that the distribution is skewed towards recipes with low number of ingredients. Suggesting that there's a high concentration of recipes that require a low number of ingredients.
+
+#### **Distribution of Number of Ingredients**
+
+The plot below shows the distribution of the number of ingredients (`n_ingredients`) used in recipes. This visualization helps us understand the variability in ingredient requirements, which could influence recipe ratings.
+
+<iframe
+  src="assets/distribution_of_ingredients.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+This plot shows that the distribution is skewed towards recipes with a low number of ingredients. Suggesting that there's a high concentration of recipes that require a low number of steps to complete.
+
 
 
 ## Bivariate Analysis
