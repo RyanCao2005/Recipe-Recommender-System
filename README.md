@@ -289,3 +289,42 @@ The p-values for both tests were computed as the proportion of permuted test sta
 ### **Significance of Results**
 
 The results of our permutation tests provide key insights into the missingness of ratings in relation to recipe attributes. We found that the missingness of ratings **is dependent on the number of ingredients**, with more complex recipes (those with more ingredients) being more likely to have missing ratings. This suggests that handling missing data for such recipes requires special attention. However, **cooking time** did not show a significant relationship with missingness, indicating that cooking time does not impact the likelihood of missing ratings. These findings are crucial for improving our recipe recommender system by better understanding the patterns of missing data and adjusting our modeling approach accordingly, ensuring higher accuracy in our model.
+
+### **Hypothesis Testing: Difference in Steps Between Low and High Rated Recipes**
+
+For this hypothesis test, we aimed to determine if there was a significant difference in the number of steps required for low and high-rated recipes.
+
+#### **Null Hypothesis**:
+There is no difference in the distribution of steps among low and high-rated recipes.
+
+#### **Alternative Hypothesis**:
+Lower-rated recipes tend to have more steps than higher-rated recipes.
+
+#### **Test Statistic**:
+The test statistic used was the **difference in means** of the number of steps (`n_steps`) for lower-rated and higher-rated recipes. Specifically, we calculated the difference in the mean number of steps for **low-rated** recipes (rating 1-3) and **high-rated** recipes (rating 4-5).
+
+#### **Significance Level**:
+A significance level of **0.05** was used for this test.
+
+#### **P-value**:
+The p-value obtained from the permutation test was **0**.
+
+#### **Conclusion**:
+
+In our case, the p-value was **0**, which **is** statistically significant at the 0.05 level. Based on this, we **reject** the null hypothesis. This indicates that there is a **potential trend** suggesting that **lower-rated recipes may have more steps**.
+
+
+---
+
+### **Visualizing the Test Statistic Distribution**
+
+Below is the **empirical distribution of the test statistic** from our permutation test. This visualization shows the distribution of the difference in means under the null hypothesis (after shuffling ratings) along with the observed test statistic (in red).
+
+<iframe
+  src="assets/number_of_steps_histogram_clean.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+
