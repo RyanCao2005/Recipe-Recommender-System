@@ -1,4 +1,3 @@
-# Recipe Recommender System:
 
 ## Introduction
 
