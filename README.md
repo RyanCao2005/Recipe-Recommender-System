@@ -332,4 +332,21 @@ Below is the **empirical distribution of the test statistic** from our permutati
 
 The **difference in means** is an appropriate test statistic because it directly compares the number of steps between low-rated and high-rated recipes. This helps us answer the question of whether the number of steps differs significantly between these two groups. A **permutation test** was chosen because it does not assume any specific distribution of the data, making it ideal for real-world data that might not follow traditional parametric assumptions. Using a significance level of **0.05** ensures a reasonable balance between Type I and Type II errors, which is standard in hypothesis testing. By focusing on **difference in means**(lower rated - rated higher), we are able to quantify the effect size and assess its statistical significance, providing clear insights into the relationship between recipe steps and rating.
 
+# Prediction Problem
+
+Our prediction problem is a **multi-class classification** task where we aim to predict the **rating** (response variable) of a recipe based on its attributes. Ratings are integers ranging from 1 to 5, and the goal is to classify recipes into one of these five rating categories.
+
+### **Why We Chose the Response Variable**:
+The rating reflects user satisfaction and is a key factor in building a personalized recommender system. Predicting this variable allows us to improve user experience by tailoring recipe recommendations to user preferences.
+
+### **Evaluation Metric**:
+We chose the **F1-score (macro-average)** as the primary evaluation metric for the following reasons:
+1. **Class Imbalance**: The dataset is heavily skewed toward higher ratings (e.g., many 5-star ratings), which could cause metrics like accuracy to be misleading. Accuracy could be artificially high simply by predicting the majority class.
+2. **Importance of Balanced Performance**: The macro-average F1-score computes the F1-score for each class and averages them equally, ensuring that all rating categories are weighted fairly, regardless of their prevalence.
+3. **Focus on Precision and Recall**: F1-score balances precision (correctness of positive predictions) and recall (coverage of actual positives), which is crucial in scenarios where missing underrepresented classes could reduce the model’s usefulness.
+
+### **Training Features and Justification**:
+We only used features that would be available at the time of prediction. For example, attributes such as `minutes`, `n_steps`, `n_ingredients`, `nutrition` details, and textual features like `tags` were used, as they are known before a recipe is rated. Features like `rating` or user-specific information were excluded during training to ensure the model generalizes to unseen recipes.
+
+
 
