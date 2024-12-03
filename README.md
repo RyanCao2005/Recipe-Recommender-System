@@ -1,4 +1,4 @@
-Made by Ryan Cao and Suchit Bhayani
+Made by Suchit Bhayani and Ryan Cao
 
 ## Introduction
 Recipes and ratings play a central role in shaping our culinary experiences, guiding how we discover and enjoy food. Predicting user preferences is essential for creating personalized and effective recipe recommendations. This project leverages machine learning to predict recipe ratings using numerical and textual features from the dataset. To address the challenge of imbalanced ratings, we employ advanced techniques such as TF-IDF, unsupervised learning methods like PCA, and ensemble learning techniques using Random Forest for robust multi-class classification.
