@@ -59,17 +59,19 @@ Both datasets provide essential information for this project. The recipes datase
 During data preprocessing, we dropped several columns from the recipes and interactions datasets that were not directly relevant to our modeling goals. Below is a summary of the dropped columns and their descriptions:
 
 ### Dropped Columns from Recipes Dataset
-| Column         | Description                                                                                   |
-|----------------|-----------------------------------------------------------------------------------------------|
-| `contributor_id` | User ID of the person who submitted the recipe.                                             |
-| `submitted`    | The date the recipe was submitted.                                                           |
-| `id`           | Unique identifier for each recipe.                                                           |
-| `name`         | The name of the recipe.                                                                      |
-| `tags`         | Tags assigned to the recipe (e.g., "vegan," "dessert").                                      |
-| `description`  | User-provided description of the recipe.                                                     |
-| `steps`        | Ordered list of instructions for making the recipe.                                          |
+
+| Column           | Description                                                                           |
+|------------------|---------------------------------------------------------------------------------------|
+| `contributor_id` | User ID of the person who submitted the recipe.                                       |
+| `submitted`      | The date the recipe was submitted.                                                   |
+| `id`             | Unique identifier for each recipe.                                                   |
+| `name`           | The name of the recipe.                                                              |
+| `tags`           | Tags assigned to the recipe (e.g., "vegan," "dessert").                              |
+| `description`    | User-provided description of the recipe.                                             |
+| `steps`          | Ordered list of instructions for making the recipe.                                  |
 
 ### Dropped Columns from Interactions Dataset
+
 | Column     | Description                                      |
 |------------|--------------------------------------------------|
 | `user_id`  | Unique identifier for each user.                |
@@ -83,19 +85,20 @@ These columns were excluded either because they were not informative for our pre
 For this project, we focused on retaining columns that provided the most value for predicting recipe ratings while dropping those that were redundant or irrelevant to our modeling goals. Below are the columns we kept and their descriptions:
 
 ### Kept Columns from Recipes Dataset
-| Column         | Description                                                                                   |
-|----------------|-----------------------------------------------------------------------------------------------|
-| `minutes`      | Time required to prepare the recipe, in minutes.                                             |
+
+| Column         | Description                                                                             |
+|----------------|-----------------------------------------------------------------------------------------|
+| `minutes`      | Time required to prepare the recipe, in minutes.                                        |
 | `nutrition`    | Nutrition details including calories, fat, sugar, sodium, protein, saturated fat, and carbs. |
-| `n_steps`      | Total number of steps involved in preparing the recipe.                                      |
-| `n_ingredients`| Total number of ingredients used in the recipe.                                              |
+| `n_steps`      | Total number of steps involved in preparing the recipe.                                 |
+| `n_ingredients`| Total number of ingredients used in the recipe.                                         |
 
 ### Kept Columns from Interactions Dataset
+
 | Column     | Description                                      |
 |------------|--------------------------------------------------|
 | `rating`   | Rating given by the user (1 to 5).              |
 | `review`   | Text review provided by the user.               |
-
 ### Dropped Columns
 We excluded several columns from the recipes and interactions datasets, such as `contributor_id`, `submitted`, `user_id`, `recipe_id`, `date`, `description`, `id`, `name`, `tags`, and `steps`. These columns were removed because they were either redundant, irrelevant to the task, or did not contribute meaningfully to predicting user ratings.
 
