@@ -12,8 +12,7 @@ From a practical standpoint, this work lays the groundwork for building recommen
 This question is crucial for building a recommender system that not only predicts ratings but also identifies the factors behind user satisfaction. It also addresses the broader challenge of handling imbalanced data, a common issue in many real-world datasets. By solving this, we gain insights into creating personalized systems across various domains while developing effective strategies for managing heavily skewed datasets.
 ### Dataset Details
 - **Number of Rows**: The dataset consists of **220373** rows.
-- **Relevant Columns**:
-  placeholder for the real columns
+- **Relevant Columns**: The dataset consists of **12** relevant columns
 
 ## Data Description
 
@@ -121,7 +120,6 @@ To prepare the dataset for analysis, we implemented a structured data cleaning p
 2. **Convert Strings to Lists**: Columns such as `tags`, `steps`, and `ingredients`, which were stored as strings of lists, were converted back into actual list formats for easier manipulation and analysis.
 3. **Outlier Removal**: Domain knowledge was used to define thresholds for numerical columns:
    - Recipes exceeding **1,500 calories** or taking more than **360 minutes** to prepare were removed to reduce data skewness caused by extreme outliers.
-Our rationale behind these thresholds is that after inspecting the outliers we realized that they included wholesale.
 
 #### Redundant Columns
 Irrelevant or redundant columns, such as `contributor_id`, `submitted`, `name`,`id`,`recipe_id`, `user_id`,`tags`,`steps`, `date` and `description`, were dropped to minimize noise and improve model performance. These columns were either duplicative or did not contribute meaningfully to the predictive modeling task.
@@ -169,10 +167,10 @@ This insight is significant for the development of the recipe recommender system
 
 ## Bivariate Analysis
 
-The box plot below shows the relationship between the number of steps in a recipe (`n_steps`) and the recipe's rating (`rating`). The plot reveals that, on average, recipes with higher ratings tend to have more steps, with some variations in the number of steps across different ratings. Notably, 5-star recipes exhibit a wide range of steps, but the median number of steps appears consistent, suggesting that well-rated recipes may vary in complexity but still maintain a high level of user satisfaction.
+The box plot below shows the relationship between the number of steps in a recipe (`n_steps`) and the recipe's rating (`rating`). The plot reveals that, on average, recipes with higher ratings tend to have have similar number of steps compared to recipes with low ratings. This plot suggests that rating is not affected by number of steps. Although it seems like this is the case we will see if this is actually true with further analysis.
 
 <iframe
-  src="assets/distribution_of_ratings_n_steps.html"
+  src="assets/steps_violin_by_rating.html"
   width="800"
   height="600"
   frameborder="0"
@@ -346,7 +344,6 @@ We chose the **F1-score (macro-average)** as the primary evaluation metric for t
 3. **Focus on Precision and Recall**: F1-score balances precision (correctness of positive predictions) and recall (coverage of actual positives), which is crucial in scenarios where missing underrepresented classes could reduce the model’s usefulness.
 
 ### **Training Features and Justification**:
-We only used features that would be available at the time of prediction. For example, attributes such as `minutes`, `n_steps`, `n_ingredients`, `nutrition` details, and textual features like `tags` were used, as they are known before a recipe is rated. Features like `rating` or user-specific information were excluded during training to ensure the model generalizes to unseen recipes.
-
+We selected features that would be available at the time of prediction. These include attributes such as `minutes`, `n_steps`, `n_ingredients`, `nutrition` details, and textual features like `tags` and `reviews`. These features are known before a recipe is rated and provide valuable information, such as preparation time, complexity, and potential sentiment from user-provided reviews.
 
 
