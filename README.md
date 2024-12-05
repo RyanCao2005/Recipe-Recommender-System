@@ -430,12 +430,7 @@ The model was evaluated using **5-fold cross-validation** on the training set. A
 ### **Confusion Matrix**
 The confusion matrix below illustrates the performance of the baseline model. Due to the highly imbalanced nature of the dataset, the model predicts the majority class (`5`) for almost all inputs, resulting in poor performance on minority classes.
 
-<iframe
-  src="assets/confusion_matrix_base.png"
-  width="1612"
-  height="1367"
-  frameborder="0"
-></iframe>
+<img src="assets/confusion_matrix_base.png" alt="Confusion Matrix for Baseline Model" width="600">
 
 This visualization highlights the need for strategies to address class imbalance, such as oversampling minority classes, undersampling the majority class, or using class-weighted loss functions.
 
