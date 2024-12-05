@@ -385,4 +385,70 @@ We chose the **F1-score (macro-average)** as the primary evaluation metric for t
 ### **Training Features and Justification**:
 We selected features that would be available at the time of prediction. These include attributes such as `minutes`, `n_steps`, `n_ingredients`, `nutrition` details, and textual features like `ingredients` and `reviews`. These features are known before a recipe is rated and provide valuable information, such as preparation time, complexity, and potential sentiment from user-provided reviews.
 
+## Baseline Model: Random Forest Classifier
 
+### **Model Overview**
+Our baseline model is a **Random Forest Classifier**, implemented using a pipeline that integrates feature preprocessing and hyperparameter tuning. The objective is to predict recipe ratings (multi-class classification) ranging from 1 to 5 based on recipe attributes.
+
+### **Features**
+The model uses the following features after preprocessing:
+1. **Ingredients (`ingredients_highest_tfidf`)**:
+   - **Nominal**: Encoded as the highest TF-IDF term for each recipe's list of ingredients.
+2. **Review Text (`review_highest_tfidf`)**:
+   - **Nominal**: Encoded as the highest TF-IDF term for each recipe's review text.
+3. **Health Metrics**:
+   - **Quantitative**: Several numerical health-related metrics about the recipes were included as-is without additional encoding:
+     - `calories (#)`: Total calories in the recipe.
+     - `total fat (PDV)`: Percentage daily value of total fat.
+     - `sugar (PDV)`: Percentage daily value of sugar.
+     - `protein (PDV)`: Percentage daily value of protein.
+     - `saturated fat (PDV)`: Percentage daily value of saturated fat.
+     - `carbs (PDV)`: Percentage daily value of carbohydrates.
+4. **Other Numerical Features**:
+   - `minutes`: Time required to prepare the recipe.
+   - `n_steps`: Number of steps in the recipe.
+   - `n_ingredients`: Number of ingredients in the recipe.
+
+### **Encodings**
+1. **TF-IDF Vectorization**:
+   - Applied to `ingredients` and `review` columns to extract the highest-weighted TF-IDF term for each recipe. This captures the most important term describing the recipe’s content or sentiment.
+2. **One-Hot Encoding**:
+   - Applied to the resulting TF-IDF terms (`ingredients_highest_tfidf` and `review_highest_tfidf`) to convert them into a format suitable for machine learning.
+3. **Passthrough for Numerical Features**:
+   - Health metrics (`calories (#)`, `total fat (PDV)`, `sugar (PDV)`, etc.), as well as `minutes`, `n_steps`, and `n_ingredients`, were included as-is because they are already quantitative.
+
+### **Hyperparameter Tuning**
+The model's hyperparameters were tuned using **GridSearchCV** with 5-fold cross-validation. The parameters tuned were:
+- `n_estimators`: Number of trees in the forest.
+- `max_depth`: Maximum depth of each tree.
+- `min_samples_split`: Minimum number of samples required to split an internal node.
+
+### **Performance**
+The model was evaluated using **5-fold cross-validation** on the training set. After hyperparameter tuning, the best-performing parameters were selected. On the test set:
+- **F1-Score (Macro-Average)**: **0.1746**
+
+### **Confusion Matrix**
+The confusion matrix below illustrates the performance of the baseline model. Due to the highly imbalanced nature of the dataset, the model predicts the majority class (`5`) for almost all inputs, resulting in poor performance on minority classes.
+
+<iframe
+  src="assets/confusion_matrix_base.png"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+This visualization highlights the need for strategies to address class imbalance, such as oversampling minority classes, undersampling the majority class, or using class-weighted loss functions.
+
+### **Model Evaluation**
+The baseline model demonstrates some strengths but also significant limitations:
+- **Strengths**:
+  - Random Forest handles multi-class classification and imbalanced data effectively to some degree using ensemble learning.
+  - The inclusion of health metrics and numerical features provides meaningful insights into recipe characteristics.
+  - TF-IDF vectorization extracts important information from textual data like `ingredients` and `review`.
+- **Weaknesses**:
+  - The model heavily favors the majority class (`5`), as shown in the confusion matrix, leading to poor performance for lower-rated recipes.
+  - Extracting only the highest TF-IDF term from `ingredients` and `review` may oversimplify the rich information in these columns.
+  - One-Hot Encoding increases feature dimensionality, potentially leading to overfitting with sparse data.
+
+### **Conclusion**
+The baseline model is a strong starting point for predicting recipe ratings, combining textual and numerical features effectively. However, it struggles with the dataset’s imbalanced nature, resulting in biased predictions. Addressing these imbalances and incorporating richer representations of textual data could significantly improve model performance.
