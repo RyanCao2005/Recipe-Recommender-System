@@ -432,8 +432,8 @@ The confusion matrix below illustrates the performance of the baseline model. Du
 
 <iframe
   src="assets/confusion_matrix_base.png"
-  width="400"
-  height="200"
+  width="1612"
+  height="1367"
   frameborder="0"
 ></iframe>
 
