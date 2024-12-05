@@ -434,16 +434,5 @@ The confusion matrix below illustrates the performance of the baseline model. Du
 
 This visualization highlights the need for strategies to address class imbalance, such as oversampling minority classes, undersampling the majority class, or using class-weighted loss functions.
 
-### **Model Evaluation**
-The baseline model demonstrates some strengths but also significant limitations:
-- **Strengths**:
-  - Random Forest handles multi-class classification and imbalanced data effectively to some degree using ensemble learning.
-  - The inclusion of health metrics and numerical features provides meaningful insights into recipe characteristics.
-  - TF-IDF vectorization extracts important information from textual data like `ingredients` and `review`.
-- **Weaknesses**:
-  - The model heavily favors the majority class (`5`), as shown in the confusion matrix, leading to poor performance for lower-rated recipes.
-  - Extracting only the highest TF-IDF term from `ingredients` and `review` may oversimplify the rich information in these columns.
-  - One-Hot Encoding increases feature dimensionality, potentially leading to overfitting with sparse data.
-
 ### **Conclusion**
 The baseline model is a strong starting point for predicting recipe ratings, combining textual and numerical features effectively. However, it struggles with the dataset’s imbalanced nature, resulting in biased predictions. Addressing these imbalances and incorporating richer representations of textual data could significantly improve model performance.
