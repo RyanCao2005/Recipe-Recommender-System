@@ -542,6 +542,8 @@ Additionally, the confusion matrix for the Dummy Classifier is shown below for c
 
 We engineered key features to enhance the recipe rating prediction model: imputed ratings based on the number of ingredients, which helped fill missing values in a meaningful way, and PCA analysis on TF-IDF data, which was explored but ultimately excluded due to computational constraints. The **Random Forest Classifier** was selected for its ability to handle both categorical and continuous features, with optimal hyperparameters found through **GridSearchCV**: 500 estimators, a maximum depth of 60, and 'balanced_subsample' class weight. These settings optimized model performance by capturing deep feature interactions and addressing class imbalances. The final model showed a significant improvement over the baseline, with the **F1-Score (Macro-Average)** rising from **0.1746** to **0.47174**. The Dummy Classifier, with an F1-Score of **0.11997**, confirmed the value of our engineered features and hyperparameter tuning. These improvements highlight the importance of meaningful feature engineering and model optimization in enhancing predictive accuracy.
 
+# Fairness Analysis
+
 ### **Fairness Analysis by Calories**
 
 We performed a fairness analysis to assess whether the model performs equally well on recipes with fewer than or equal to 1000 calories compared to those with more than 1000 calories. This is crucial for ensuring that the model provides balanced recommendations, especially for individuals seeking to bulk or gain weight. We compared the **F1-Score (Macro-Average)** between the two groups (low-calorie vs high-calorie) using a **permutation test**.
