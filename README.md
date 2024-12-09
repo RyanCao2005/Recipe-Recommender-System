@@ -441,6 +441,7 @@ The baseline model is a strong starting point for predicting recipe ratings, com
 
 ### **Feature Engineering**
 To improve upon the baseline model, we engineered new features that better represent the characteristics of recipes and their reviews:
+
 1. **Imputed Ratings Based on Ingredients**:
    - Missing ratings were imputed probabilistically based on the number of ingredients (`n_ingredients`). This method assigns missing ratings by sampling from the existing ratings within the same `n_ingredients` group.
    - **Why it matters**: Recipes with similar complexity (as reflected by the number of ingredients) are likely to have comparable user feedback.
@@ -475,26 +476,64 @@ Below are the plots of captured variance for `ingredients` and `review`:
 The final model is a **Random Forest Classifier**, chosen for its ability to handle categorical and numerical data effectively. We refined the model pipeline to incorporate the new engineered features while retaining the preprocessing steps from the baseline model.
 
 1. **Pipeline Steps**:
-   - TF-IDF vectorization for `ingredients` and `review`.
+   - TF-IDF vectorization for `ingredients` and `review` fields.
    - One-Hot Encoding for the highest TF-IDF terms.
    - Imputed ratings based on `n_ingredients`.
    - Passthrough of numerical health metrics (`calories (#)`, `protein (PDV)`, etc.).
 
 2. **Hyperparameter Tuning**:
-   - Hyperparameters were tuned using **GridSearchCV** with 5-fold cross-validation. The tuned parameters included:
-     - `n_estimators`: Number of trees in the forest.
-     - `max_depth`: Maximum depth of each tree.
-     - `min_samples_split`: Minimum number of samples required to split an internal node.
+   - Hyperparameters were tuned using **GridSearchCV** with 5-fold cross-validation to optimize the performance of the **Random Forest Classifier**. The following types of hyperparameters were tuned:
+   
+     - **Number of Estimators**: Controls the number of trees in the random forest. A higher number of trees generally improves the model's performance but increases computational cost.
+     
+     - **Maximum Depth**: Defines the maximum depth of each decision tree. This hyperparameter controls the complexity of the trees and helps prevent overfitting.
+     
+     - **Class Weight**: Adjusts the weight of classes to handle imbalanced data. Options include methods that balance the weight of each class based on frequency or by sampling.
 
----
+   - **Best Hyperparameter Combination**:  
+     The best combination of hyperparameters found was:
+     - `randomforestclassifier__n_estimators`: 500
+     - `randomforestclassifier__max_depth`: 60
+     - `randomforestclassifier__class_weight`: 'balanced_subsample'
+
 
 ### **Final Model Performance**
 The final model was evaluated on the same test set as the baseline model to ensure a fair comparison. Key performance metrics include:
 
-- **Baseline F1-Score (Macro-Average)**: 0.1746
-- **Final Model F1-Score (Macro-Average)**: **[Insert Value Here]**
+- **Baseline F1-Score (Macro-Average)**: **0.1746**
+- **Final Model F1-Score (Macro-Average)**: **0.47174**
 
 This improvement reflects the added value of our engineered features and hyperparameter tuning. However, the dataset's intrinsic complexity and high dimensionality remain challenges for achieving high accuracy.
+
+---
+
+### **Dummy Classifier Performance**
+To further assess the performance of our final model, we also evaluated a **Dummy Classifier** with the `uniform` strategy, which randomly assigns labels to the test set. This provides a baseline comparison for evaluating whether the final model's improvements are significant.
+
+- **Dummy Classifier F1-Score (Macro-Average)**: **0.11997**
+
+The Dummy Classifier's performance is much lower than the final model, confirming that the final model's feature engineering and hyperparameter tuning provide a substantial improvement.
+
+---
+
+### **Confusion Matrix**
+The following confusion matrix shows the performance of the final model on the test set:
+
+<iframe
+  src="assets/final_model_confusion_matrix.png"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+Additionally, the confusion matrix for the Dummy Classifier is shown below for comparison:
+
+<iframe
+  src="assets/dummy_classifier_confusion_matrix.png"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
 ---
 
