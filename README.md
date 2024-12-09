@@ -541,3 +541,27 @@ Additionally, the confusion matrix for the Dummy Classifier is shown below for c
 
 We engineered key features to enhance the recipe rating prediction model: imputed ratings based on the number of ingredients, which helped fill missing values in a meaningful way, and PCA analysis on TF-IDF data, which was explored but ultimately excluded due to computational constraints. The **Random Forest Classifier** was selected for its ability to handle both categorical and continuous features, with optimal hyperparameters found through **GridSearchCV**: 500 estimators, a maximum depth of 60, and 'balanced_subsample' class weight. These settings optimized model performance by capturing deep feature interactions and addressing class imbalances. The final model showed a significant improvement over the baseline, with the **F1-Score (Macro-Average)** rising from **0.1746** to **0.47174**. The Dummy Classifier, with an F1-Score of **0.11997**, confirmed the value of our engineered features and hyperparameter tuning. These improvements highlight the importance of meaningful feature engineering and model optimization in enhancing predictive accuracy.
 
+### **Fairness Analysis by Calories**
+
+We performed a fairness analysis to assess whether the model performs equally well on recipes with fewer than or equal to 1000 calories compared to those with more than 1000 calories. This is crucial for ensuring that the model provides balanced recommendations, especially for individuals seeking to bulk or gain weight. We compared the **F1-Score (Macro-Average)** between the two groups (low-calorie vs high-calorie) using a **permutation test**.
+
+- **Null Hypothesis**: The model performs equally well for both groups (less than or equal to 1000 calories and greater than 1000 calories).
+- **Alternative Hypothesis**: The model performs better for one group over the other.
+
+The observed test statistic, which is the absolute difference in F1-scores between the two groups, was compared to the distribution of test statistics obtained from 1,000 permutations of the data. The **p-value** for the test was calculated as the proportion of permuted test statistics greater than or equal to the observed test statistic.
+
+#### Results:
+- The **p-value** from the fairness analysis was **0.128**.
+- **Conclusion**: Since the p-value (0.128) is greater than our alpha level of 0.05, we **fail to reject the null hypothesis**. This means we do not have convincing evidence to suggest that our model is unfair towards higher calorie recipes. The model's performance on recipes with fewer or more than 1000 calories is comparable.
+
+#### Test Statistic Distribution:
+The histogram below visualizes the distribution of test statistics from the permutation test:
+
+<iframe
+  src="assets/fairness_test_statistics_histogram.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+The black line indicates the observed test statistic, which lies within the distribution of simulated test statistics, supporting the conclusion of fairness in model performance across calorie groups.
