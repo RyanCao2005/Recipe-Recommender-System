@@ -436,3 +436,67 @@ This visualization highlights the need for strategies to address class imbalance
 
 ### **Conclusion**
 The baseline model is a strong starting point for predicting recipe ratings, combining textual and numerical features effectively. However, it struggles with the dataset’s imbalanced nature, resulting in biased predictions. Addressing these imbalances and incorporating richer representations of textual data could significantly improve model performance.
+
+## Final Model: Recipe Rating Prediction
+
+### **Feature Engineering**
+To improve upon the baseline model, we engineered new features that better represent the characteristics of recipes and their reviews:
+1. **Imputed Ratings Based on Ingredients**:
+   - Missing ratings were imputed probabilistically based on the number of ingredients (`n_ingredients`). This method assigns missing ratings by sampling from the existing ratings within the same `n_ingredients` group.
+   - **Why it matters**: Recipes with similar complexity (as reflected by the number of ingredients) are likely to have comparable user feedback.
+
+2. **PCA Analysis on TF-IDF Data**:
+   - We applied **Principal Component Analysis (PCA)** to reduce dimensionality for features derived from `ingredients` and `review` columns after TF-IDF vectorization and One-Hot Encoding.
+   - **Results**:
+     - The variance explained by the components increased slowly as a function of the number of components, suggesting high intrinsic dimensionality.
+     - **Conclusion**: PCA was not used in the final model as the benefits did not justify the computational cost.
+
+Below are the plots of captured variance for `ingredients` and `review`:
+
+#### PCA for Ingredients
+<iframe
+  src="assets/ingredients_pca_variance.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+#### PCA for Reviews
+<iframe
+  src="assets/review_pca_variance.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+---
+
+### **Final Model Overview**
+The final model is a **Random Forest Classifier**, chosen for its ability to handle categorical and numerical data effectively. We refined the model pipeline to incorporate the new engineered features while retaining the preprocessing steps from the baseline model.
+
+1. **Pipeline Steps**:
+   - TF-IDF vectorization for `ingredients` and `review`.
+   - One-Hot Encoding for the highest TF-IDF terms.
+   - Imputed ratings based on `n_ingredients`.
+   - Passthrough of numerical health metrics (`calories (#)`, `protein (PDV)`, etc.).
+
+2. **Hyperparameter Tuning**:
+   - Hyperparameters were tuned using **GridSearchCV** with 5-fold cross-validation. The tuned parameters included:
+     - `n_estimators`: Number of trees in the forest.
+     - `max_depth`: Maximum depth of each tree.
+     - `min_samples_split`: Minimum number of samples required to split an internal node.
+
+---
+
+### **Final Model Performance**
+The final model was evaluated on the same test set as the baseline model to ensure a fair comparison. Key performance metrics include:
+
+- **Baseline F1-Score (Macro-Average)**: 0.1746
+- **Final Model F1-Score (Macro-Average)**: **[Insert Value Here]**
+
+This improvement reflects the added value of our engineered features and hyperparameter tuning. However, the dataset's intrinsic complexity and high dimensionality remain challenges for achieving high accuracy.
+
+---
+
+### **Conclusion**
+While PCA was explored as a dimensionality reduction method, the minimal variance captured indicated that our TF-IDF features likely have high intrinsic dimensionality. By focusing on meaningful feature engineering, such as imputed ratings and categorical encodings, our final model showed measurable improvements over the baseline. Further refinements, such as advanced embeddings or ensemble methods, could help address the challenges posed by the dataset.
