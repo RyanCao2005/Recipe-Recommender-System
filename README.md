@@ -479,10 +479,11 @@ The final model is a **Random Forest Classifier**, chosen for its ability to han
    - TF-IDF vectorization for `ingredients` and `review` fields.
    - One-Hot Encoding for the highest TF-IDF terms.
    - Imputed ratings based on `n_ingredients`.
-   - Passthrough of numerical health metrics (`calories (#)`, `protein (PDV)`, etc.).
+   - Standardized recipe metrics (`calories (#)`, `protein (PDV)`, etc.).
+   - Passthrough on rest
 
 2. **Hyperparameter Tuning**:
-   - Hyperparameters were tuned using **GridSearchCV** with 5-fold cross-validation to optimize the performance of the **Random Forest Classifier**. The following types of hyperparameters were tuned:
+   - Hyperparameters were tuned using **GridSearchCV** with 3-fold cross-validation to optimize the performance of the **Random Forest Classifier**. The following types of hyperparameters were tuned:
    
      - **Number of Estimators**: Controls the number of trees in the random forest. A higher number of trees generally improves the model's performance but increases computational cost.
      
