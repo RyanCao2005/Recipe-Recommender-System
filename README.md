@@ -1,6 +1,6 @@
 Made by Suchit Bhayani and Ryan Cao
 
-## Introduction
+# Introduction
 Recipes and ratings play a central role in shaping our culinary experiences, guiding how we discover and enjoy food. Predicting user preferences is essential for creating personalized and effective recipe recommendations. This project leverages machine learning to predict recipe ratings using numerical and textual features from the dataset. To address the challenge of imbalanced ratings, we employ advanced techniques such as TF-IDF, unsupervised learning methods like PCA, and ensemble learning algorithms like Random Forest for robust multi-class classification.
 
 From a practical standpoint, this work lays the groundwork for building recommender systems that align more closely with individual tastes, even when working with messy or imbalanced datasets, and by minimizing computational costs. From a theoretical standpoint, it offers valuable insights into applying machine learning to real-world challenges, particularly in managing skewed data distributions, and improving predictive accuracy.
@@ -104,7 +104,7 @@ For this project, we focused on retaining columns that provided the most value f
 We excluded several columns from the recipes and interactions datasets, such as `contributor_id`, `submitted`, `user_id`, `recipe_id`, `date`, `description`, `id`, `name`, `tags`, and `steps`. These columns were removed because they were either redundant, irrelevant to the task, or did not contribute meaningfully to predicting user ratings.
 
 By focusing on these key columns, we streamlined our dataset to maximize its predictive value while minimizing noise and unnecessary complexity.
-## Exploratory Data Analysis and Data Cleaning
+# Exploratory Data Analysis and Data Cleaning
 
 ### Data Cleaning Pipeline
 
@@ -385,7 +385,7 @@ We chose the **F1-score (macro-average)** as the primary evaluation metric for t
 ### **Training Features and Justification**:
 We selected features that would be available at the time of prediction. These include attributes such as `minutes`, `n_steps`, `n_ingredients`, `nutrition` details, and textual features like `ingredients` and `reviews`. These features are known before a recipe is rated and provide valuable information, such as preparation time, complexity, and potential sentiment from user-provided reviews.
 
-## Baseline Model: Random Forest Classifier
+# Baseline Model: Random Forest Classifier
 
 ### **Model Overview**
 Our baseline model is a **Random Forest Classifier**, implemented using a pipeline that integrates feature preprocessing and hyperparameter tuning. The objective is to predict recipe ratings (multi-class classification) ranging from 1 to 5 based on recipe attributes.
@@ -437,7 +437,7 @@ This visualization highlights the need for strategies to address class imbalance
 ### **Conclusion**
 The baseline model is a strong starting point for predicting recipe ratings, combining textual and numerical features effectively. However, it struggles with the dataset’s imbalanced nature, resulting in biased predictions. Addressing these imbalances and incorporating richer representations of textual data could significantly improve model performance.
 
-## Final Model: Recipe Rating Prediction
+# Final Model: Recipe Rating Prediction
 
 ### **Feature Engineering**
 To improve upon the baseline model, we engineered new features that better represent the characteristics of recipes and their reviews:
