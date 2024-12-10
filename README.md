@@ -187,7 +187,7 @@ The plot below shows the distribution of the number of steps (`n_steps`) across 
   frameborder="0"
 ></iframe>
 
-This plot shows that the distribution is skewed to the right. Suggesting that there's a high concentration of recipes that require a low number of ingredients.
+This plot shows that the distribution is skewed to the right. Suggesting that there's a high concentration of recipes that require a low number of steps to complete.
 
 #### **Distribution of Number of Ingredients**
 
@@ -200,7 +200,7 @@ The plot below shows the distribution of the number of ingredients (`n_ingredien
   frameborder="0"
 ></iframe>
 
-This plot shows that the distribution is skewed to the right. Suggesting that there's a high concentration of recipes that require a low number of steps to complete.
+This plot shows that the distribution is skewed to the right. Suggesting that there's a high concentration of recipes that require a low number of ingredients.
 
 
 
